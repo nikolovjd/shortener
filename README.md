@@ -4,26 +4,19 @@
 
 copy .env.example file to .env and adjust variables as desired
 
-### Start DB
+### Start DB and APP
 
-need to provide ```SHORTENER_DB_USER``` and ```SHORTENER_DB_PASS``` env variables to compose for DB creation
+need to provide ```SHORTENER_DB_USER``` and ```SHORTENER_DB_PASS``` env variables to compose for DB creation (these must match the env file)
 
 ```bash
 $ SHORTENER_DB_USER=dev SHORTENER_DB_PASS=dev docker-compose up (-d for detached)
-```
-
-### Running the app
-
-```bash
-$ npm install
-$ npm run build
-$ npm run start:prod
 ```
 
 ### Test
 
 ```bash
 # unit tests
+$ npm install
 $ npm run test
 ```
 
