@@ -1,0 +1,24 @@
+version: '3.3'
+
+services:
+  shortener:
+    restart: always
+    container_name: shortener
+    ports:
+      - "3000:3000"
+    build: ./
+    volumes:
+      - ${PWD}/bloom_filter.init:/usr/src/app/bloom_filter.json
+  db:
+    restart: always
+    container_name: shortener-db
+    image: "romeoz/docker-postgresql:11"
+    ports:
+      - "5432:5432"
+    volumes:
+      - /var/lib/postgresql:/var/lib/postgresql
+    environment:
+      DB_NAME: "shortener"
+      DB_USER: "${SHORTENER_DB_USER}"
+      DB_PASS: "${SHORTENER_DB_PASS}"
+      PG_TRUST_LOCALNET: "true"
